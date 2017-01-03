@@ -32,7 +32,10 @@ public class MasterSpellList : MonoBehaviour {
 	
 	    }
 
-
+    public void UseActiveSpell()
+        {
+        StartCoroutine(TimeLeap());
+        }
 
 
 
@@ -41,21 +44,21 @@ public class MasterSpellList : MonoBehaviour {
         {
         player.isActive = false;
         Debug.Log("Time Leap activated!");
-        player.currentShadowSpawn = transform.position + (player.timeLeapTarget - transform.position) * .2f;
-        Instantiate(player.PlayerShadow, player.currentShadowSpawn, transform.rotation);
+        player.currentShadowSpawn = player.transform.position + (player.timeLeapTarget - player.transform.position) * .2f;
+        Instantiate(player.PlayerShadow, player.currentShadowSpawn, player.transform.rotation);
         yield return new WaitForSecondsRealtime(0.1f);
-        player.currentShadowSpawn = transform.position + (player.timeLeapTarget - transform.position) * .4f;
-        Instantiate(player.PlayerShadow, player.currentShadowSpawn, transform.rotation);
+        player.currentShadowSpawn = player.transform.position + (player.timeLeapTarget - player.transform.position) * .4f;
+        Instantiate(player.PlayerShadow, player.currentShadowSpawn, player.transform.rotation);
         yield return new WaitForSecondsRealtime(0.1f);
-        player.currentShadowSpawn = transform.position + (player.timeLeapTarget - transform.position) * .6f;
-        Instantiate(player.PlayerShadow, player.currentShadowSpawn, transform.rotation);
+        player.currentShadowSpawn = player.transform.position + (player.timeLeapTarget - player.transform.position) * .6f;
+        Instantiate(player.PlayerShadow, player.currentShadowSpawn, player.transform.rotation);
         yield return new WaitForSecondsRealtime(0.1f);
-        player.currentShadowSpawn = transform.position + (player.timeLeapTarget - transform.position) * .8f;
-        Instantiate(player.PlayerShadow, player.currentShadowSpawn, transform.rotation);
+        player.currentShadowSpawn = player.transform.position + (player.timeLeapTarget - player.transform.position) * .8f;
+        Instantiate(player.PlayerShadow, player.currentShadowSpawn, player.transform.rotation);
         yield return new WaitForSecondsRealtime(0.1f);
-        player.currentShadowSpawn = transform.position + (player.timeLeapTarget - transform.position) * 1f;
-        Instantiate(player.PlayerShadow, player.currentShadowSpawn, transform.rotation);
-        transform.position = Vector3.Lerp(transform.position, (transform.position + (player.timeLeapTarget - transform.position) * 1f), 2f);
+        player.currentShadowSpawn = player.transform.position + (player.timeLeapTarget - player.transform.position) * 1f;
+        Instantiate(player.PlayerShadow, player.currentShadowSpawn, player.transform.rotation);
+        player.transform.position = Vector3.Lerp(player.transform.position, (player.transform.position + (player.timeLeapTarget - player.transform.position) * 1f), 2f);
         player.isActive = true;
         StopCoroutine(TimeLeap());
         yield return null;

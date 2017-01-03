@@ -12,12 +12,13 @@ public class PlayerController : MonoBehaviour {
     int enemyMask;
     int playerMask;
     float CamtoFloorRayLength = 1000f;
-    float timeLeapLength = 100f;  
+    float timeLeapLength = 100f;
+
+
+
+    public MasterSpellList MSL;
     public Vector3 timeLeapTarget;
     public Vector3 currentShadowSpawn;
-
-
-
     public bool isActive = true;
     public Interactable interactable;
     public float playerSpeed;
@@ -63,6 +64,10 @@ public class PlayerController : MonoBehaviour {
             Move(h, v);
             Turn();
             Interaction();
+            if(Input.GetKeyDown(KeyCode.R))
+                {
+                MSL.UseActiveSpell();
+                }
             }
 
     }
