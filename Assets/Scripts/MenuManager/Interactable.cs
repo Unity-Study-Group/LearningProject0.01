@@ -1,25 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Interactable : MonoBehaviour {
 
-    [System.Serializable]
-    public class Action
-        {
-        public Color color;
-        public Sprite sprite;
-        public string title;
-        }
-
     public string title;
-    public Action[] options;
-    public PlayerController player;
+    public List<Ability> options;
+    public PlayerManager player;
 
     bool hasOpened = false;
-
-
-
-    
 
     public void  ExecuteInteractable()
         {
@@ -27,16 +15,13 @@ public class Interactable : MonoBehaviour {
             {
             if(Input.GetMouseButtonDown(0))
                 {
-                player.isActive = false;
-                //Debug.LogError("On mouse down function");
+                player.canMove = false;
+                player.canInteract = false;
                 RadialMenuSpawner.ins.SpawnMenu(this);
                 hasOpened = true;
                 }
-
             }
-        
         }
-
 
 	void Start ()
         {
@@ -45,11 +30,13 @@ public class Interactable : MonoBehaviour {
             title = gameObject.name;
             }
 	    }
-	void Update ()
+
+	void FixedUpdate ()
         {
         if(Input.GetMouseButtonUp(0))
             {
-            player.isActive = true;
+            player.canMove = true;
+            player.canInteract = true;
             hasOpened = false;
             }
 	    }

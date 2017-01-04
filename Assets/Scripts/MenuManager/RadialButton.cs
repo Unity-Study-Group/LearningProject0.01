@@ -6,16 +6,12 @@ using System;
 
 public class RadialButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
-
-
     public Image circle;
     public Image Icon;
     public string title;
     public RadialMenu myMenu;
     public Text label;
-
-
+    public Ability ability;
     Color defaultColor;
 
     void Start()
@@ -23,22 +19,17 @@ public class RadialButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         label.text = title;
         label.enabled = false;
         }
-    void Update()
-        {
-
-        }
 
     public void OnPointerEnter(PointerEventData eventData)
         {
-        myMenu.selected = this;
+        myMenu.selected = ability;
         defaultColor = circle.color;
-        circle.color = Color.white;
         RectTransform rectT = GetComponent<RectTransform>();
         rectT.sizeDelta = new Vector2(30f, 30f);
         label.rectTransform.localPosition = new Vector2(0f, 40f);
         //label.enabled = true;
-
         }
+
     public void OnPointerExit(PointerEventData eventData)
         {
         myMenu.selected = null;
